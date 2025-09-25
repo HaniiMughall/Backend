@@ -4,5 +4,3 @@ flask_bcrypt
 flask_jwt_extended
 flask_cors
 pymysql
-python-dotenv
-tensorflow==2.15.0   # (agar model bhi deploy karna hai to)
