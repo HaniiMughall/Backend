@@ -1,12 +1,11 @@
 import os
 
 class Config:
-    SECRET_KEY = "change-me"
-    JWT_SECRET_KEY = "jwt-secret-change"
+    SECRET_KEY = os.environ.get("SECRET_KEY", "mysecret123")
+    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "jwtsecret123")
 
-    # Aiven MySQL connection string
-    # Aiven credentials removed from repo
-    # Use environment variable instead
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    if not SQLALCHEMY_DATABASE_URI:
+        raise RuntimeError("DATABASE_URL environment variable not set!")
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
